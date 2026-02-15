@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Smart Attendance System</h2>
+
+
+<div class="card">
+
+<h3>Mark Attendance</h3>
+
+<form method="POST">
+
+<select name="employee_id" required>
+<option value="">Select Employee</option>
+
+{% for emp in employees %}
+<option value="{{ emp.id }}">
+{{ emp.name }} ({{ emp.department }})
+</option>
+{% endfor %}
+
+</select>
+
+
+<div style="grid-column:span 2;display:flex;gap:15px;margin-top:10px;">
+
+<button name="action" value="in">✅ Check In</button>
+<button name="action" value="out">⏰ Check Out</button>
+
+</div>
+
+</form>
+
+</div>
+
+
+<h3>Today's Records</h3>
+
+<table>
+
+<tr>
+<th>Name</th>
+<th>Department</th>
+<th>In</th>
+<th>Out</th>
+</tr>
+
+{% for r in records %}
+
+<tr>
+<td>{{ r.employee.name }}</td>
+<td>{{ r.employee.department }}</td>
+<td>{{ r.in_time or "-" }}</td>
+<td>{{ r.out_time or "-" }}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}

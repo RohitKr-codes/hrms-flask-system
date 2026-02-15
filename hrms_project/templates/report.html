@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Department Analytics</h2>
+
+<table>
+
+<tr>
+    <th>Department</th>
+    <th>Total Employees</th>
+</tr>
+
+{% for row in report %}
+
+<tr>
+    <td>{{ row[0] }}</td>
+    <td>{{ row[1] }}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>👥 Employee Management</h2>
+
+
+<div class="card">
+
+<h3>Add Employee</h3>
+
+<form method="POST">
+
+<input name="name" placeholder="Full Name" required>
+<input name="email" type="email" placeholder="Email" required>
+
+<input name="department" placeholder="Department" required>
+<input name="designation" placeholder="Designation" required>
+
+<button>Add Employee</button>
+
+</form>
+
+</div>
+
+
+<table>
+
+<tr>
+<th>Name</th>
+<th>Email</th>
+<th>Department</th>
+<th>Profile</th>
+</tr>
+
+{% for emp in employees %}
+
+<tr>
+<td>{{ emp.name }}</td>
+<td>{{ emp.email }}</td>
+<td>{{ emp.department }}</td>
+
+<td>
+<a href="/employees/{{ emp.id }}" class="btn">View</a>
+</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}
